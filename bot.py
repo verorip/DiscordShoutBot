@@ -37,4 +37,4 @@ async def on_ready():
 
 
 bot.add_command(punisci)
-bot.run('NzUyODM4NTg2MDA4ODYyNzcz.X1ddkQ.QpEmrH6C0gb0r53_fl8SJ-4LF9Q')
+bot.run('token')
