@@ -21,7 +21,7 @@ async def punisci(ctx, member:discord.Member, *args):
     channel = discord.utils.get(guild.voice_channels, name='PunishChanel')
     if channel==None: return
     await member.edit(voice_channel=channel)
-
+    await bot.delete_message(ctx.message)
     vc = await channel.connect()
 
     vc.play(discord.FFmpegPCMAudio(executable="D:/Python/DiscordShoutBot/ffmpeg-20200831-4a11a6f-win64-static/bin/ffmpeg.exe", source="testing.mp3"), after=lambda e: print('done', e))
