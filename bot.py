@@ -9,11 +9,11 @@ from discord.ext.commands import Bot
 bot = commands.Bot(command_prefix='$')
 
 
-insulti=['boss culo', 'boss scemo', 'boss inutile come la merda']
+blacklist = ['verorip', 'On4me']
 
 @commands.command()
 async def punisci(ctx, member:discord.Member, *args):
-    if('verorip' in member.display_name):
+    if(len[i for i in range(len(blacklist)) if blacklist[i] in member.display_name]>0):
         print('nope')
         return
 
@@ -24,7 +24,7 @@ async def punisci(ctx, member:discord.Member, *args):
 
     vc = await channel.connect()
 
-    vc.play(discord.FFmpegPCMAudio(executable="D:/Python/discordbot/ffmpeg-20200831-4a11a6f-win64-static/bin/ffmpeg.exe", source="testing.mp3"), after=lambda e: print('done', e))
+    vc.play(discord.FFmpegPCMAudio(executable="D:/Python/DiscordShoutBot/ffmpeg-20200831-4a11a6f-win64-static/bin/ffmpeg.exe", source="testing.mp3"), after=lambda e: print('done', e))
     while vc.is_playing():
         time.sleep(1.0)
     await vc.disconnect()
@@ -37,4 +37,4 @@ async def on_ready():
 
 
 bot.add_command(punisci)
-bot.run('token')
+bot.run('NzUyODM4NTg2MDA4ODYyNzcz.X1ddkQ.QpEmrH6C0gb0r53_fl8SJ-4LF9Q')
