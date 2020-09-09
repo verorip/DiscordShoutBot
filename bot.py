@@ -13,15 +13,18 @@ blacklist = ['verorip', 'On4me']
 
 @commands.command()
 async def p(ctx, member:discord.Member, *args):
-
     await ctx.message.channel.purge(limit=1)
     if(any([blacklist[i] in member.display_name for i in range(len(blacklist))])):
         print('nope')
         return
-
+    if (member.voice == None):
+        print('not in a vchannel')
+        return
     guild = ctx.guild
     channel = discord.utils.get(guild.voice_channels, name='PunishChanel')
-    if channel==None: return
+
+    if channel==None:
+        channel = await guild.create_voice_channel('PunishChanel')
     await member.edit(voice_channel=channel)
     vc = await channel.connect()
 
