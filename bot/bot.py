@@ -20,6 +20,7 @@ async def p(ctx, member:discord.Member, *args):
     if (member.voice == None):
         print('not in a vchannel')
         return
+    old_channel = member.voice.channel
     guild = ctx.guild
     channel = discord.utils.get(guild.voice_channels, name='PunishChanel')
 
@@ -31,6 +32,7 @@ async def p(ctx, member:discord.Member, *args):
     vc.play(discord.FFmpegPCMAudio(executable="D:/Python/DiscordShoutBot/ffmpeg-20200831-4a11a6f-win64-static/bin/ffmpeg.exe", source="testing.mp3"), after=lambda e: print('done', e))
     while vc.is_playing():
         time.sleep(1.0)
+    await member.edit(voice_channel=old_channel)
     await vc.disconnect()
 
 
@@ -41,4 +43,4 @@ async def on_ready():
 
 
 bot.add_command(p)
-bot.run('token')
+bot.run('NzUyODM4NTg2MDA4ODYyNzcz.X1ddkQ.1fUnuwFsgn0CitXM98vxrMA8W8w')
