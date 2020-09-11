@@ -23,12 +23,16 @@ async def p(ctx, member:discord.Member, *args):
     old_channel = member.voice.channel
     guild = ctx.guild
     channel = discord.utils.get(guild.voice_channels, name='PunishChanel')
-
+    discord.opus.load_opus()
+    if not discord.opus.is_loaded():
+        raise RunTimeError('Opus failed to load')
     if channel==None:
         channel = await guild.create_voice_channel('PunishChanel')
     await member.edit(voice_channel=channel)
     vc = await channel.connect()
-    print(dir_path, type(dir_path))
+
+
+
     vc.play(discord.FFmpegPCMAudio(dir_path+"/testing.mp3"), after=lambda e: print('done', e))
     while vc.is_playing():
         time.sleep(1.0)
