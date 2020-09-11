@@ -7,7 +7,7 @@ from discord.ext.commands import Bot
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 bot = commands.Bot(command_prefix='$')
-
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 blacklist = ['nope', 'On4me']
 
@@ -29,7 +29,7 @@ async def p(ctx, member:discord.Member, *args):
     await member.edit(voice_channel=channel)
     vc = await channel.connect()
 
-    vc.play(discord.FFmpegPCMAudio(executable="./ffmpeg-20200831-4a11a6f-win64-static/bin/ffmpeg.exe", source="testing.mp3"), after=lambda e: print('done', e))
+    vc.play(discord.FFmpegPCMAudio(executable=dir_path+"/ffmpeg-20200831-4a11a6f-win64-static/bin/ffmpeg.exe", source="testing.mp3"), after=lambda e: print('done', e))
     while vc.is_playing():
         time.sleep(1.0)
     await member.edit(voice_channel=old_channel)
