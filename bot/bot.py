@@ -29,7 +29,7 @@ async def p(ctx, member:discord.Member, *args):
     await member.edit(voice_channel=channel)
     vc = await channel.connect()
 
-    vc.play(discord.FFmpegPCMAudio(executable="D:/Python/DiscordShoutBot/ffmpeg-20200831-4a11a6f-win64-static/bin/ffmpeg.exe", source="testing.mp3"), after=lambda e: print('done', e))
+    vc.play(discord.FFmpegPCMAudio(executable="./ffmpeg-20200831-4a11a6f-win64-static/bin/ffmpeg.exe", source="testing.mp3"), after=lambda e: print('done', e))
     while vc.is_playing():
         time.sleep(1.0)
     await member.edit(voice_channel=old_channel)
