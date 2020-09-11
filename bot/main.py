@@ -9,7 +9,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 bot = commands.Bot(command_prefix='$')
 
 
-blacklist = ['verorip', 'On4me']
+blacklist = ['nope', 'On4me']
 
 @commands.command()
 async def p(ctx, member:discord.Member, *args):
