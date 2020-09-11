@@ -5,7 +5,7 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 
-
+TOKEN = ''
 bot = commands.Bot(command_prefix='$')
 
 
@@ -43,4 +43,4 @@ async def on_ready():
 
 
 bot.add_command(p)
-bot.run('NzUyODM4NTg2MDA4ODYyNzcz.X1ddkQ.1fUnuwFsgn0CitXM98vxrMA8W8w')
+bot.run(TOKEN)
