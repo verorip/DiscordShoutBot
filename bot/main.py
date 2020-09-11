@@ -28,7 +28,7 @@ async def p(ctx, member:discord.Member, *args):
         channel = await guild.create_voice_channel('PunishChanel')
     await member.edit(voice_channel=channel)
     vc = await channel.connect()
-
+    print(dir_path, type(dir_path))
     vc.play(discord.FFmpegPCMAudio(executable=dir_path+"/ffmpeg-20200831-4a11a6f-win64-static/bin/ffmpeg.exe", source="testing.mp3"), after=lambda e: print('done', e))
     while vc.is_playing():
         time.sleep(1.0)
