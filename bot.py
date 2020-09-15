@@ -9,7 +9,7 @@ from discord.ext.commands import Bot
 bot = commands.Bot(command_prefix='$')
 
 
-blacklist = ['verorip', 'On4me']
+blacklist = []
 
 @commands.command()
 async def p(ctx, member:discord.Member, *args):
@@ -20,6 +20,7 @@ async def p(ctx, member:discord.Member, *args):
         return
 
     guild = ctx.guild
+    old_channel = member.voice.channel
     channel = discord.utils.get(guild.voice_channels, name='PunishChanel')
     if channel==None: return
     await member.edit(voice_channel=channel)
@@ -28,6 +29,7 @@ async def p(ctx, member:discord.Member, *args):
     vc.play(discord.FFmpegPCMAudio(executable="D:/Python/DiscordShoutBot/ffmpeg-20200831-4a11a6f-win64-static/bin/ffmpeg.exe", source="testing.mp3"), after=lambda e: print('done', e))
     while vc.is_playing():
         time.sleep(1.0)
+    await member.edit(voice_channel=old_channel)
     await vc.disconnect()
 
 
